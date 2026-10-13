@@ -5,28 +5,25 @@
 package server;
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
+import java.util.*;
 /**
  *
- * @author Windows
+ * @author ranasgalla.niccolo
  */
 
 public class Server {
     public static void main(String[] args) throws Exception {
-        ServerSocket serverSocket = new ServerSocket(5555);
-        Socket clientSocket = serverSocket.accept();
-
-        DataInputStream in = new DataInputStream(clientSocket.getInputStream());
-        DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
-        Scanner tastiera = new Scanner(System.in);
+        ServerSocket server = new ServerSocket(5555);
+        System.out.println("Server Palla Magica avviato");
 
         while (true) {
+            // Aspetta un client
+            Socket socket = server.accept();
+            System.out.println("Nuovo client connesso!");
 
-        System.out.println("Client: " + in.readUTF());
-
-        System.out.print("Server: ");
-        out.writeUTF(tastiera.nextLine());
-
+            // Crea un thread per questo client e lo avvia
+            GestoreClient gestore = new GestoreClient(socket);
+            gestore.start();
         }
     }
 }
