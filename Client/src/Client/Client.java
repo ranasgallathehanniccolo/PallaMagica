@@ -8,7 +8,7 @@ import java.net.*;
 import java.util.Scanner;
 /**
  *
- * @author Windows
+ * @author ranasgalla.niccolo
  */
 
 public class Client {
@@ -19,6 +19,9 @@ public class Client {
         DataInputStream in = new DataInputStream(socket.getInputStream());
         Scanner tastiera = new Scanner(System.in);
 
+        // Legge subito il benvenuto (con menu e help) mandato dal server
+        System.out.println("Server: " + in.readUTF());
+        
         while (true) {
 
         System.out.print("Client: ");

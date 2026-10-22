@@ -19,7 +19,7 @@ public class Server {
         while (true) {
             // Aspetta un client
             Socket socket = server.accept();
-            System.out.println("Nuovo client connesso!");
+            System.out.println("Nuovo client connesso");
 
             // Crea un thread per questo client e lo avvia
             GestoreClient gestore = new GestoreClient(socket);

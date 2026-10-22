@@ -4,15 +4,17 @@
  */
 package server;
 import java.util.*;
+
 /**
  *
  * @author ranasgalla.niccolo
  */
+
 public class PallaMagica {
     private String[] risposteBasi = {
-        "Sì, assolutamente.",
-        "È molto probabile.",
-        "Forse, chiedi più tardi.",
+        "Si, assolutamente.",
+        "E' molto probabile.",
+        "Forse, chiedi piu' tardi.",
         "Non ci contare.",
         "Assolutamente no."
     };
@@ -20,38 +22,45 @@ public class PallaMagica {
         "De",
         "Pefforza",
         "Si va a letto",
-        "AAAAAAAH",
-        "lo fanno",
+        "Bimbi",
+        "Lo fanno",
         "Mio padre"
     };
-    private String[] risposteFilosoficheMeme = {
-        "Non importa come percorrerai la strada...",
-        "Ricorda: l'acqua non è verde",
-        "Le cinesi ti diranno sempre: tloppo colto",
-        ""
+    private String[] risposteCinico = {
+        "Sì. Ma tanto finisce male lo stesso.",
+        "Certo, le speranze si sono sempre realizzate... a qualcun altro.",
+        "Chiedilo al tuo futuro io. Ah no, è depresso anche lui.",
+        "Il tuo piano è ottimo. Peccato che l'universo non l'abbia letto.",
+        "Ti rispondo quando avrò voglia. Spoiler: mai.",
     };
-    
+
     private String[] risposteInUso;
+    private String nome;
+    private Random rand = new Random();
 
     // Il costruttore imposta l'array giusto in base al numero scelto
     public PallaMagica(int personalita) {
         switch (personalita) {
-            default:
             case 1:
                 risposteInUso = risposteBasi;
+                nome = "Classica";
                 break;
             case 2:
                 risposteInUso = risposteDarioMoccia;
+                nome = "Dario Moccia";
                 break;
             case 3:
-                risposteInUso = risposteFilosoficheMeme;
-                break;
+                risposteInUso = risposteCinico;
+                nome = "Offensivo";
+                break;    
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public String dammiRisposta() {
-        Random rand = new Random();
-        int indice = rand.nextInt(risposteInUso.length);
-        return risposteInUso[indice];
+        return risposteInUso[rand.nextInt(risposteInUso.length)];
     }
 }
