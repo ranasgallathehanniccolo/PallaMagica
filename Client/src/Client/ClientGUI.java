@@ -200,7 +200,6 @@ public class ClientGUI extends javax.swing.JFrame {
         if (msg.startsWith("Personalità impostata")) {
         txtDomanda.setEnabled(true);
         btnInvio.setEnabled(true);
-        txtDomanda.requestFocus();
         }
     }
     /**
