@@ -49,6 +49,7 @@ public class ClientGUI extends javax.swing.JFrame {
         lblDomande1 = new javax.swing.JLabel();
         btnPersonalita = new javax.swing.JButton();
         btnInvio = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,16 +61,19 @@ public class ClientGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtAreaRisposta);
 
         lblRisposte.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblRisposte.setText("RISPOSTA");
+        lblRisposte.setText("ORACOLO");
 
         lblDomande1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblDomande1.setText("DOMANDA");
 
-        btnPersonalita.setText("Personalita");
+        btnPersonalita.setText("Personalità");
         btnPersonalita.addActionListener(this::btnPersonalitaActionPerformed);
 
         btnInvio.setText("Invio");
         btnInvio.addActionListener(this::btnInvioActionPerformed);
+
+        btnHelp.setText("Help");
+        btnHelp.addActionListener(this::btnHelpActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,23 +82,29 @@ public class ClientGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDomanda, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnInvio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(117, 117, 117)
+                                .addGap(197, 197, 197)
                                 .addComponent(lblDomande1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
-                                .addComponent(btnPersonalita))))
+                                .addGap(212, 212, 212)
+                                .addComponent(lblRisposte)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(lblRisposte)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(btnPersonalita)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnHelp))
+                    .addComponent(txtDomanda, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInvio)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,15 +112,17 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblRisposte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDomande1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDomanda, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInvio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPersonalita)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPersonalita)
+                    .addComponent(btnHelp))
                 .addGap(58, 58, 58))
         );
 
@@ -136,6 +148,11 @@ public class ClientGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         inviaDomanda();
     }//GEN-LAST:event_btnInvioActionPerformed
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Seleziona la personalità iniziale, poi scrivi la domanda e invia la risposta", "HELP", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnHelpActionPerformed
 
     private void connetti() {
         new Thread(() -> {
@@ -212,6 +229,7 @@ public class ClientGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnInvio;
     private javax.swing.JButton btnPersonalita;
     private javax.swing.JScrollPane jScrollPane1;
