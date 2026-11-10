@@ -13,7 +13,8 @@ import java.net.*;
 
 public class GestoreClient extends Thread {
     private Socket socket;
-    private PallaMagica palla;
+    private PallaJson palla;
+    private int persona = 0;
     private static final String HELP =
         "Comandi disponibili:\n"
         + "  PERSONA_[1-3]     scegli la personalita\n"
@@ -36,6 +37,7 @@ public class GestoreClient extends Thread {
            // + "  3 - Cinico\n"        
            // + HELP);   // un solo messaggio
 
+           palla = new PallaJson("risposte.json");
 
             while (true) {
                 String msg = in.readUTF().trim();
@@ -47,8 +49,8 @@ public class GestoreClient extends Thread {
                         if (n < 1 || n > 3) {
                             out.writeUTF("ERRORE: personalita non valida (scegli 1, 2 o 3).");
                         } else {
-                            palla = new PallaMagica(n);
-                            out.writeUTF("Personalita impostata: " + palla.getNome()
+                            persona = n;
+                            out.writeUTF("Personalita impostata: " + palla.getNome(n)
                                     + ". Ora fai la tua domanda!");
                         }
                     } catch (NumberFormatException e) {
@@ -56,10 +58,10 @@ public class GestoreClient extends Thread {
                     }
 
                 } else if (msg.startsWith("DOMANDA_")) {
-                    if (palla == null) {
+                    if (persona == 0) {
                         out.writeUTF("ERRORE: prima scegli una personalita con PERSONA_[numero].");
                     } else {
-                        out.writeUTF(palla.dammiRisposta());
+                        out.writeUTF(palla.dammiRisposta(persona));
                     }
 
                 } else if (msg.equals("HELP")) {
@@ -71,6 +73,7 @@ public class GestoreClient extends Thread {
             }
         } catch (Exception e) {
             // il client ha chiuso la connessione
+            e.printStackTrace();
         } finally {
             System.out.println("Un client si e' disconnesso");
             try { socket.close(); } catch (IOException e) { }

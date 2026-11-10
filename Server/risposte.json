@@ -1,0 +1,33 @@
+[
+  {
+    "nome": "Classica",
+    "risposte": [
+      "Si, assolutamente.",
+      "E' molto probabile.",
+      "Forse, chiedi piu' tardi.",
+      "Non ci contare.",
+      "Assolutamente no."
+    ]
+  },
+  {
+    "nome": "Dario Moccia",
+    "risposte": [
+      "De",
+      "Pefforza",
+      "Si va a letto",
+      "Bimbi",
+      "Lo fanno",
+      "Mio padre"
+    ]
+  },
+  {
+    "nome": "Offensivo",
+    "risposte": [
+      "Sì. Ma tanto finisce male lo stesso.",
+      "Certo, le speranze si sono sempre realizzate... a qualcun altro.",
+      "Chiedilo al tuo futuro io. Ah no, è depresso anche lui.",
+      "Il tuo piano è ottimo. Peccato che l'universo non l'abbia letto.",
+      "Ti rispondo quando avrò voglia. Spoiler: mai."
+    ]
+  }
+]
